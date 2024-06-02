@@ -24,8 +24,13 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build website
         run: |
+          pwd
           ls
-          pnpm build
+          pnpm gen-all
+          echo '^_^ WTF?'
+          pwd
+          ls
+          pnpm docusaurus build
 
       - name: Upload Build artifact
         uses: actions/upload-pages-artifact@v3
