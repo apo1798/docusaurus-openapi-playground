@@ -18,10 +18,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-docs
-*docs/customization
-*docs/intro.mdx
-*docs/sidebars.mdx
-*docs/versioning.mdx
-

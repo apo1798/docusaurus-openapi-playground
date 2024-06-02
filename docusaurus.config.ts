@@ -8,13 +8,19 @@ import { DOCUSAURUS_VERSION } from '@docusaurus/utils';
 const config: Config = {
   title: 'Docusaurus OpenAPI Docs',
   tagline: 'OpenAPI plugin for generating API reference docs in Docusaurus v2',
-  url: 'https://docusaurus-openapi.tryingpan.dev',
-  baseUrl: '/',
+  url: 'https://apo1798.github.io',
+  baseUrl: '/docusaurus-openapi-playground',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'PaloAltoNetworks',
-  projectName: 'docusaurus-openapi-docs',
+  organizationName: 'apo1798',
+  projectName: 'docusaurus-openapi-playground',
+
+  // i18n: {
+  //   defaultLocale: 'en',
+  //   locales: ['en'],
+  //   localeConfigs: {},
+  // },
 
   presets: [
     [
@@ -31,10 +37,10 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        gtag: {
-          trackingID: 'GTM-THVM29S',
-          anonymizeIP: false,
-        },
+        // gtag: {
+        //   trackingID: 'GTM-THVM29S',
+        //   anonymizeIP: false,
+        // },
       } satisfies Preset.Options,
     ],
   ],
@@ -271,10 +277,10 @@ const config: Config = {
             specPath: 'examples/jsonplaceholder/openapi.yaml',
             // proxy: 'https://cors.pan.dev',
             outputDir: 'docs/jsonPlaceholder',
-            // sidebarOptions: {
-            //   groupPathsBy: 'tag',
-            //   categoryLinkSource: 'tag',
-            // },
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
             // template: 'api.mustache', // Customize API MDX with mustache template
             downloadUrl:
               'https://raw.githubusercontent.com/PaloAltoNetworks/docusaurus-openapi-docs/main/demo/examples/jsonplaceholder/openapi.yaml',
