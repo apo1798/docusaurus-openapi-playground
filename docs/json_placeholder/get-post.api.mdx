@@ -1,13 +1,13 @@
 ---
-id: get-posts
-title: "getPosts"
-description: "Returns all posts"
-sidebar_label: "getPosts"
+id: get-post
+title: "getPost"
+description: "Returns a post by id"
+sidebar_label: "getPost"
 hide_title: true
 hide_table_of_contents: true
-api: eJxtUk1v2zAM/SsGz0Gc7ZhbD8OQYdiCtjsFOSgyG6uTJZWkgwVG/vtIu5nbrL5Y/HiP5CMHaJA9hSIhJ1jDPUpPiSsXY1UyC8MCxB0Z1jvYjvZ+AbkgOQNsGoUcUbavmYRccmLU9AE+r1b2e8//0HuPzE99rK7JivM5CSaxdFdKDH5kr5/ZMAOwb7Fz9pJzQWVxRO6suCDY8Rt/Pjyjl7GRlz4QNtZ2aNTRM9LGHhIkTiW7ElE0RQcqZCNJmBpXwEwZtLMjElz+cXwYm2jnEAuFdLTIXOj/6AwcxYUbm78Hc9q3gA6lza96a//FSatGfV1SSE/ZKpyQeJL603K1XMHM+O3h549qG53HNscGqbrbbjR8sx/EqhUpvK5H+cucv9Tmg88NLnWk2nq12p0bV5Rch1Nv1fUY3hEP844/vrFJGME/UmvNkEbBKRpyGnUH5Xp/rWmljmE4OMZfFC8Xc7/0SGf16/PkKLiDjb3bK1GLTgdQY4DfqClwp1dYTMaTi/14Ubdnd9m/kfzrl0ddw180QBUx
+api: eJx1U01v2zAM/SuCThsQ2O4Q7OBbD8OQHbqg6U5BDopNx+pkS5XoYobh/z5S9uom7k6WSb7Hj0cOsoRQeO1Q21bm8hGw820QSjgbUJx7oUu5kaguQeZHuSdjkKeNtA68YsyuJNQFkD0U6JRXDSB4Dh9kSz/kjxya+Z3Cmt4eXjrtgbDoO9jcFPFUg+gCeMqdUHAoamiUzAeJvYt0LcIFPLkq6xuFk+nrVo7jibmDs22AwIgvWcafa/5DVxQQQtUZ8S+YuApLtC1yuHLO6CL2lz4HxgzrKuz5GQq8auY4dcq17+LYNJqJunGGplLy6Jzn4aGeCiTAurHxjeND30S7uAJ63V7YsyRaexdglJEMbNpm2/WA2C9ai6KyXVtGKIla21nrqDPpmMuUtySkgy7HqHBlmeyV5J+I7pIsyeSS+Mfh54PYG1VAbU1JCt/vd/JW/gOAqBFdyNM4fbfEJ9STLmwJCXWacsdcQKOiQvOyUYFi3sYr3mFR+L9rPk0M4Q+mlJU2lpXwhsFTx8eYMFBsrqOaNWci8zCcVYBf3owjm1868D3Z6fmqvFZnbp8OotSB3zTISplwu/nvS/z0OK/VZ3FzDx9WORtV20tOaTr+o+dv6KcDHE8UVYOiKcZKJsc9XYLDd5DV6vNJvYn//dsTbcNffBprWA==
 sidebar_class_name: "get api-method"
-info_path: jsonPlaceholder/json-placeholder-api
+info_path: json_placeholder/json-placeholder-api
 custom_edit_url: null
 ---
 
@@ -28,22 +28,54 @@ import TabItem from "@theme/TabItem";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"getPosts"}
+  children={"getPost"}
 >
 </Heading>
 
 <MethodEndpoint
   method={"get"}
-  path={"/posts"}
+  path={"/posts/{id}"}
 >
   
 </MethodEndpoint>
 
 
 
-Returns all posts
+Returns a post by id
 
-<div>
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"id","in":"path","required":true,"description":"The user id.","schema":{"type":"integer","format":"int64"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
   <div>
     <ApiTabs
       label={undefined}
@@ -95,13 +127,7 @@ Returns all posts
                     </div><ul
                       style={{"marginLeft":"1rem"}}
                     >
-                      <li>
-                        <div
-                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
-                        >
-                          Array [
-                        </div>
-                      </li><SchemaItem
+                      <SchemaItem
                         collapsible={false}
                         name={"id"}
                         required={true}
@@ -137,13 +163,7 @@ Returns all posts
                         schema={{"type":"string"}}
                       >
                         
-                      </SchemaItem><li>
-                        <div
-                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
-                        >
-                          ]
-                        </div>
-                      </li>
+                      </SchemaItem>
                     </ul>
                   </details>
                 </TabItem><TabItem
@@ -151,7 +171,7 @@ Returns all posts
                   value={"Example (from schema)"}
                 >
                   <ResponseSamples
-                    responseExample={"[\n  {\n    \"id\": 0,\n    \"userId\": 0,\n    \"title\": \"string\",\n    \"completed\": \"string\"\n  }\n]"}
+                    responseExample={"{\n  \"id\": 0,\n  \"userId\": 0,\n  \"title\": \"string\",\n  \"completed\": \"string\"\n}"}
                     language={"json"}
                   >
                     
@@ -160,6 +180,19 @@ Returns all posts
               </SchemaTabs>
             </TabItem>
           </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"404"}
+        value={"404"}
+      >
+        <div>
+          
+          
+          Post not found
+          
+          
+        </div><div>
+          
         </div>
       </TabItem>
     </ApiTabs>
