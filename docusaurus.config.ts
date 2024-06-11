@@ -189,14 +189,14 @@ const config: Config = {
         docsPluginId: "classic",
         config: {
           "json_placeholder_zh-TW": {
-            specPath: "./examples/zh-TW/jsonplaceholder/openapi_zh-TW.yaml",
+            specPath: "./examples/zh-TW/jsonplaceholder/openapi.yaml",
             outputDir:
               "./i18n/zh-TW/docusaurus-plugin-content-docs/current/json-placeholder",
             showSchemas: true,
             sidebarOptions: {},
           } satisfies OpenApiPlugin.Options,
           json_placeholder_en: {
-            specPath: "./examples/en/jsonplaceholder/openapi_en.yaml",
+            specPath: "./examples/en/jsonplaceholder/openapi.yaml",
             outputDir: "./docs/json-placeholder",
             showSchemas: true,
             sidebarOptions: {},

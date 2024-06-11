@@ -31,44 +31,44 @@ const set = (obj: Record<string, any>, path: string, value: string) => {
 
 const generateLocalizedFiles = (
   fileObject: Record<string, any>,
-  supportedLanguages: string[],
+  lang: string,
 ) => {
-  supportedLanguages.forEach((lang) => {
-    const clonedObject = structuredClone(fileObject);
+  const clonedObject = structuredClone(fileObject);
 
-    const convertI18nProps = (
-      object: Record<string, any>,
-      lang: string,
-      path?: string,
-    ) => {
-      for (let key in object) {
-        // TODO check {}[]
-        if (
-          supportedLanguages.includes(key) &&
-          isObject(object) &&
-          path &&
-          i18nProps.includes(path.split(".").at(-1) ?? "")
-        ) {
-          const i18nContent = object[lang] || object["en"] || "";
-          set(clonedObject, path, i18nContent);
-        } else if (isObject(object[key])) {
+  const convertI18nProps = (object: Record<string, any>, path?: string) => {
+    for (let key in object) {
+      const currentProp = object[key];
+      if (Array.isArray(currentProp)) {
+        const items = currentProp;
+        items.forEach((item, index) => {
           convertI18nProps(
-            object[key],
-            lang,
-            path ? `${path}.${key}` : `${key}`,
+            item,
+            path ? `${path}.${key}.${index}` : `${key}.${index}`,
           );
-        }
+        });
+      } else if (
+        supportedLanguages.includes(key) &&
+        isObject(object) &&
+        path &&
+        i18nProps.includes(path.split(".").at(-1) ?? "")
+      ) {
+        const i18nContent = object[lang] || object["en"] || "";
+        set(clonedObject, path, i18nContent);
+      } else if (isObject(currentProp)) {
+        convertI18nProps(currentProp, path ? `${path}.${key}` : `${key}`);
       }
-    };
+    }
+  };
 
-    convertI18nProps(clonedObject, lang);
+  convertI18nProps(clonedObject);
 
-    fs.writeFileSync(
-      `./${outputDir}/${lang}/jsonplaceholder/openapi_${lang}.yaml`,
-      stringify(clonedObject),
-      "utf8",
-    );
-  });
+  fs.writeFileSync(
+    `./${outputDir}/${lang}/jsonplaceholder/openapi.yaml`,
+    stringify(clonedObject),
+    "utf8",
+  );
 };
 
-generateLocalizedFiles(fileObject, supportedLanguages);
+supportedLanguages.forEach((lang) => {
+  generateLocalizedFiles(fileObject, lang);
+});

@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title:
-    zh-TW: JSON Placeholder API 中文版
-    en: JSON Placeholder API
-  description: See https://jsonplaceholder.typicode.com/
+  title: JSON Placeholder API
+  description:
+    zh-TW: 參考 https://jsonplaceholder.typicode.com/
+    en: See https://jsonplaceholder.typicode.com/
 paths:
   /posts:
     get:

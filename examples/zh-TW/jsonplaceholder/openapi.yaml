@@ -1,8 +1,9 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: JSON Placeholder API 中文版
-  description: See https://jsonplaceholder.typicode.com/
+  # title here may not have i18n support, it will be used as url slug, or need to find a solution/workaround
+  title: JSON Placeholder API
+  description: 參考 https://jsonplaceholder.typicode.com/
 paths:
   /posts:
     get:
