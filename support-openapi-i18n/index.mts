@@ -1,12 +1,23 @@
+// TODO try to into a package entry
+
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import { parse, stringify } from "yaml";
 
 const supportedLanguages = ["zh-TW", "en"];
 const i18nProps = ["summary", "description", "title"];
 const outputDir = "examples";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// TODO
+// 1. recursively read files
+// 2. avoid overwriting existing files
+// const currentDir = pwd
+
 const file = fs.readFileSync(
-  "./support-openapi-i18n/jsonplaceholder/openapi.yaml",
+  path.join(__dirname, "./jsonplaceholder/openapi.yaml"),
   "utf8",
 );
 const fileObject = parse(file);
@@ -33,8 +44,6 @@ const generateLocalizedFiles = (
   fileObject: Record<string, any>,
   supportedLanguages: string[],
 ) => {
-  fs.writeFileSync("aaaa.json", JSON.stringify(fileObject), "utf-8");
-
   supportedLanguages.forEach((lang) => {
     const clonedObject = structuredClone(fileObject);
 
@@ -44,7 +53,6 @@ const generateLocalizedFiles = (
       path?: string,
     ) => {
       for (let key in object) {
-        // TODO check {}[]
         if (
           supportedLanguages.includes(key) &&
           isObject(object) &&
@@ -52,6 +60,7 @@ const generateLocalizedFiles = (
           i18nProps.includes(path.split(".").at(-1) ?? "")
         ) {
           const i18nContent = object[lang] || object["en"] || "";
+          console.log(path, i18nContent);
           set(clonedObject, path, i18nContent);
         } else if (isObject(object[key])) {
           convertI18nProps(
@@ -66,7 +75,7 @@ const generateLocalizedFiles = (
     convertI18nProps(clonedObject, lang);
 
     fs.writeFileSync(
-      `./${outputDir}/${lang}/jsonplaceholder/openapi_${lang}.yaml`,
+      `./examples/jsonplaceholder/openapi_${lang}.yaml`,
       stringify(clonedObject),
       "utf8",
     );

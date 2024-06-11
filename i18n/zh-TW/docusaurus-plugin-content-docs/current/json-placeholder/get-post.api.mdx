@@ -1,13 +1,13 @@
 ---
-id: get-posts
-title: "getPosts"
-description: "所有的貼文"
-sidebar_label: "getPosts"
+id: get-post
+title: "getPost"
+description: "根據 id 回傳貼文"
+sidebar_label: "getPost"
 hide_title: true
 hide_table_of_contents: true
-api: eJxtUrFOG0EQ/ZXT1JbPULpzESEjFCxBKsvFem/wrbm7XXbHVqyTpRRIYJqEhiKKlA+IaFKl4HNiw2dk5g5yNnDN7c7Me/vmzZSQYNDeODK2gC5sVl82P1aP3y+ffj9s7q6gBaQmAbpDGNhAAUYtsA69kvJ+woAJUp1pgcfgbBGQy0vY73Tkt8u+vn1Yf/21uf62vvnJAG0LwoKkTjmXGV3RxtMgxSUEnWKu5EQLhwxX3qsF4wxhHrbidjxFTZWCi5nxmIhek3BgFtD35UCGMqyezF2GxCXcifPSC5laMQMaSsPKJuhh+Z/j3VxN26QCeVNMJNM89DbbACtX4dU9HBkJyteCHCm1z0azfqco5Uvsnj03xZmVF+boQ+3xXrvT7kDDeHhy/DEaZEpjarMEfdQb9KO/f+55uo+ray7cHdEJYpQSudCNq0G4BtnmNoy2Cba5uVhUi4pcVcMqVI61yuhlH3aIy2ba7y1ZbRDhZ4r5RVNUxvtMcHXLQ3AvC5iKZxwoy7EK+Mlny6WEL2boFxzn41x5o8bS/nDERCkqls+XEs6RS6CnNTqxc66yWbVZr9dvOdqy/uDDKY/jH27sI6k=
+api: eJx9U0trFEEQ/itDnRSa3VWjh7nlIBIPuhhzWvbQma7sdJxHp7s2uAx9kUAeGIwKgcSgOXgQHyjxorL+m8wk+RfSPUs2m108TU89vqqv6qsCBJpIS0UyzyCE6vh39fYwkCIo370vX/w8PxlW+5vAgHjPQNiBdm7IQJdBrlBzl7UgIIQekvMAA8U1T5FQu/ACMp4ihCAFMJCuguIUAwONa32pUUBIuo/sWhtLBnVwdrgR+DwTxZhyCAuggfJoGWEPNTBYyXXKqTbdmwNruw7aqDwzaFzG7VbLfSbhy9fD8tWXamuv3PkADKI8I8zIxXGlEhl5Xs1V44KL6fL58ipGNEGiUzPsG9QL7kGSEvTQqUqQULiRKe2GRrLuTIoZjOwlxkxfDTt2GdIy6znPuNC0d5zo1wfWOtNc6870ZE7/Hlcnb6qj7errzsXBHvi4uem4Oqj8sVttbp8dboxkYhncnTXv0+Gf6mi3PPh08fL7+eePvqMUKc5H0vGyoRhCaCqnr2YhhfWCWckd2jpqUyPdarQaLRjzebj4+FHQTniEcZ4I1MF8eyE4/fWt2t88296C67paRAxiImXCpl+vGmc2aKBklAtsRHnadFRcKyn3EhipuIcUjGQ+gVuMJfSfC6qXQvicmirhMvPL1olLr9l3fEkDDELpBRO7WmEHimKZG1zSibXOvNZHPYCw02WwzrXky24UnQKENO4tIFzhibl+VFebvPFkpNybweSpzWxyZOTZAFzFpO/+gMEzHNSnbbuWQYxcoPaN1I75KEJFV1Kmjstd66UOHtx/Ctb+AzKcrxM=
 sidebar_class_name: "get api-method"
-info_path: json-placeholder/json-placeholder-api-中文版
+info_path: current/json-placeholder/json-placeholder-api-中文版
 custom_edit_url: null
 ---
 
@@ -28,13 +28,46 @@ import TabItem from "@theme/TabItem";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"getPosts"}
+  children={"getPost"}
 ></Heading>
 
-<MethodEndpoint method={"get"} path={"/posts"}></MethodEndpoint>
+<MethodEndpoint method={"get"} path={"/posts/{id}"}></MethodEndpoint>
 
-所有的貼文
+根據 id 回傳貼文
 
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+></Heading>
+
+<details
+  style={{ marginBottom: "1rem" }}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary style={{}}>
+    <h3 className={"openapi-markdown__details-summary-header-params"}>
+      Path Parameters
+    </h3>
+  </summary>
+  <div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "id",
+          in: "path",
+          required: true,
+          description: "User 的 id",
+          schema: { type: "integer", format: "int64" },
+        }}
+      ></ParamsItem>
+    </ul>
+  </div>
+</details>
 <div>
   <div>
     <ApiTabs label={undefined} id={undefined}>
@@ -61,18 +94,6 @@ import TabItem from "@theme/TabItem";
                       style={{ textAlign: "left", marginLeft: "1rem" }}
                     ></div>
                     <ul style={{ marginLeft: "1rem" }}>
-                      <li>
-                        <div
-                          style={{
-                            fontSize: "var(--ifm-code-font-size)",
-                            opacity: "0.6",
-                            marginLeft: "-.5rem",
-                            paddingBottom: ".5rem",
-                          }}
-                        >
-                          Array [
-                        </div>
-                      </li>
                       <SchemaItem
                         collapsible={false}
                         name={"id"}
@@ -105,17 +126,6 @@ import TabItem from "@theme/TabItem";
                         qualifierMessage={undefined}
                         schema={{ type: "string" }}
                       ></SchemaItem>
-                      <li>
-                        <div
-                          style={{
-                            fontSize: "var(--ifm-code-font-size)",
-                            opacity: "0.6",
-                            marginLeft: "-.5rem",
-                          }}
-                        >
-                          ]
-                        </div>
-                      </li>
                     </ul>
                   </details>
                 </TabItem>
@@ -125,7 +135,7 @@ import TabItem from "@theme/TabItem";
                 >
                   <ResponseSamples
                     responseExample={
-                      '[\n  {\n    "id": 0,\n    "userId": 0,\n    "title": "string",\n    "completed": "string"\n  }\n]'
+                      '{\n  "id": 0,\n  "userId": 0,\n  "title": "string",\n  "completed": "string"\n}'
                     }
                     language={"json"}
                   ></ResponseSamples>
@@ -134,6 +144,18 @@ import TabItem from "@theme/TabItem";
             </TabItem>
           </MimeTabs>
         </div>
+      </TabItem>
+      <TabItem label={"403"} value={"403"}>
+        <div>你沒有權限</div>
+        <div></div>
+      </TabItem>
+      <TabItem label={"404"} value={"404"}>
+        <div>沒有對應的貼文</div>
+        <div></div>
+      </TabItem>
+      <TabItem label={"500"} value={"500"}>
+        <div>伺服器錯誤</div>
+        <div></div>
       </TabItem>
     </ApiTabs>
   </div>

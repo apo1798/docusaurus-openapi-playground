@@ -1,0 +1,87 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title:
+    zh-TW: JSON Placeholder API 中文版
+    en: JSON Placeholder API
+  description: See https://jsonplaceholder.typicode.com/
+paths:
+  /posts:
+    get:
+      description:
+        zh-TW: 所有的貼文
+        en: Returns all posts
+      tags: ["Posts"]
+      operationId: "getPosts"
+      responses:
+        "200":
+          description:
+            zh-TW: 呼叫成功
+            en: Successful response
+
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/PostsList"
+
+  /posts/{id}:
+    get:
+      description:
+        zh-TW: 根據 id 回傳貼文
+        en: Returns a post by id
+      tags: ["Posts"]
+      operationId: "getPost"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description:
+            zh-TW: User 的 id
+            en: The user id.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description:
+            zh-TW: 呼叫成功
+            en: Successful response
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Post"
+        "403":
+          description:
+            zh-TW: 你沒有權限
+            en: Not authorized
+        "404":
+          description:
+            zh-TW: 沒有對應的貼文
+            en: Post not found...
+        "500":
+          description:
+            zh-TW: 伺服器錯誤
+            en: Internal Server Error
+
+components:
+  schemas:
+    PostsList:
+      "type": "array"
+      "items":
+        $ref: "#/components/schemas/Post"
+    Post:
+      "type": "object"
+      "required":
+        - "id"
+        - "userId"
+        - "title"
+        - "completed"
+      "properties":
+        id:
+          type: "integer"
+        userId:
+          type: "integer"
+        title:
+          type: "string"
+        completed:
+          type: "string"

@@ -17,6 +17,12 @@ const config: Config = {
   organizationName: "apo1798",
   projectName: "docusaurus-openapi-playground",
 
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "zh-TW"],
+    localeConfigs: {},
+  },
+
   presets: [
     [
       "classic",
@@ -182,9 +188,16 @@ const config: Config = {
         id: "openapi",
         docsPluginId: "classic",
         config: {
-          json_placeholder: {
-            specPath: "./examples/jsonplaceholder/openapi_zh-TW.yaml",
-            outputDir: "./docs/json-placeholder",
+          "json_placeholder_zh-TW": {
+            specPath: "./examples/zh-TW/jsonplaceholder/openapi_zh-TW.yaml",
+            outputDir:
+              "./i18n/zh-TW/docusaurus-plugin-content-docs/current/json-placeholder",
+            showSchemas: true,
+            sidebarOptions: {},
+          } satisfies OpenApiPlugin.Options,
+          json_placeholder_en: {
+            specPath: "./examples/en/jsonplaceholder/openapi_en.yaml",
+            outputDir: "./docs/current/json-placeholder",
             showSchemas: true,
             sidebarOptions: {},
           } satisfies OpenApiPlugin.Options,
