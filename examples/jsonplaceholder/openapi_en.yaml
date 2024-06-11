@@ -1,34 +1,28 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title:
-    zh-TW: JSON Placeholder API 中文版
-    en: JSON Placeholder API
+  title: JSON Placeholder API
   description: See https://jsonplaceholder.typicode.com/
 paths:
   /posts:
     get:
-      description:
-        zh-TW: 所有的貼文
-        en: Returns all posts
-      tags: ["Posts"]
-      operationId: "getPosts"
+      description: Returns all posts
+      tags:
+        - Posts
+      operationId: getPosts
       responses:
         "200":
-          description:
-            zh-TW: 呼叫成功
-            en: Successful response
-
+          description: Successful response
           content:
-            "application/json":
+            application/json:
               schema:
                 $ref: "#/components/schemas/PostsList"
-
   /posts/{id}:
     get:
       description: Returns a post by id
-      tags: ["Posts"]
-      operationId: "getPost"
+      tags:
+        - Posts
+      operationId: getPost
       parameters:
         - name: id
           in: path
@@ -41,7 +35,7 @@ paths:
         "200":
           description: Successful response
           content:
-            "application/json":
+            application/json:
               schema:
                 $ref: "#/components/schemas/Post"
         "403":
@@ -50,26 +44,25 @@ paths:
           description: Post not found...
         "500":
           description: Internal Server Error
-
 components:
   schemas:
     PostsList:
-      "type": "array"
-      "items":
+      type: array
+      items:
         $ref: "#/components/schemas/Post"
     Post:
-      "type": "object"
-      "required":
-        - "id"
-        - "userId"
-        - "title"
-        - "completed"
-      "properties":
+      type: object
+      required:
+        - id
+        - userId
+        - title
+        - completed
+      properties:
         id:
-          type: "integer"
+          type: integer
         userId:
-          type: "integer"
+          type: integer
         title:
-          type: "string"
+          type: string
         completed:
-          type: "string"
+          type: string

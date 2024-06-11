@@ -1,35 +1,36 @@
-import type * as Preset from '@docusaurus/preset-classic';
-import type { Config } from '@docusaurus/types';
-import type * as Plugin from '@docusaurus/types/src/plugin';
-import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
+import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
+import type * as Plugin from "@docusaurus/types/src/plugin";
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
+import { PluginOptions } from "@easyops-cn/docusaurus-search-local";
 
-import { DOCUSAURUS_VERSION } from '@docusaurus/utils';
+import { DOCUSAURUS_VERSION } from "@docusaurus/utils";
 
 const config: Config = {
-  title: 'Docusaurus OpenAPI Docs',
-  tagline: 'OpenAPI plugin for generating API reference docs in Docusaurus v2',
-  url: 'https://apo1798.github.io',
-  baseUrl: '/docusaurus-openapi-playground',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'apo1798',
-  projectName: 'docusaurus-openapi-playground',
+  title: "Docusaurus OpenAPI Docs",
+  tagline: "OpenAPI plugin for generating API reference docs in Docusaurus v2",
+  url: "https://apo1798.github.io",
+  baseUrl: "/docusaurus-openapi-playground",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "apo1798",
+  projectName: "docusaurus-openapi-playground",
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          routeBasePath: '/',
-          sidebarPath: './sidebars.ts',
+          routeBasePath: "/",
+          sidebarPath: "./sidebars.ts",
           editUrl:
-            'https://github.com/PaloAltoNetworks/docusaurus-openapi-docs/tree/main/demo',
-          docItemComponent: '@theme/ApiItem', // Derived from docusaurus-theme-openapi
+            "https://github.com/PaloAltoNetworks/docusaurus-openapi-docs/tree/main/demo",
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -42,86 +43,64 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'OpenAPI Docs',
+      title: "OpenAPI Docs",
       logo: {
-        alt: 'Keytar',
-        src: 'img/docusaurus-openapi-docs-logo.svg',
+        alt: "Keytar",
+        src: "img/docusaurus-openapi-docs-logo.svg",
       },
-      // items: [
-      //   {
-      //     type: 'doc',
-      //     docId: 'intro',
-      //     position: 'left',
-      //     label: 'Docs',
-      //   },
-      //   {
-      //     type: 'dropdown',
-      //     label: 'Demos',
-      //     position: 'left',
-      //     items: [
-      //       {
-      //         label: 'API Zoo',
-      //         to: '/category/petstore-api',
-      //       },
-      //       {
-      //         label: 'Petstore (versioned)',
-      //         to: '/category/petstore-versioned-api',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     href: 'https://medium.com/palo-alto-networks-developer-blog',
-      //     position: 'right',
-      //     className: 'header-medium-link',
-      //     'aria-label': 'Palo Alto Networks Developer Blog',
-      //   },
-      //   {
-      //     href: 'https://github.com/PaloAltoNetworks/docusaurus-openapi-docs',
-      //     position: 'right',
-      //     className: 'header-github-link',
-      //     'aria-label': 'GitHub repository',
-      //   },
-      // ],
+      items: [
+        {
+          type: "dropdown",
+          label: "API Docs",
+          docId: "index",
+          position: "left",
+          items: [{ label: "JSON Placeholder", to: "/json_placeholder" }],
+        },
+        {
+          type: "localeDropdown",
+          position: "right",
+        },
+      ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'OpenAPI Docs',
-              to: '/',
+              label: "OpenAPI Docs",
+              to: "/",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/questions/tagged/docusaurus",
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: "Discord",
+              href: "https://discordapp.com/invite/docusaurus",
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: "Twitter",
+              href: "https://twitter.com/docusaurus",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'Blog',
-              href: 'https://medium.com/palo-alto-networks-developer-blog',
+              label: "Blog",
+              href: "https://medium.com/palo-alto-networks-developer-blog",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/PaloAltoNetworks/docusaurus-openapi-docs',
+              label: "GitHub",
+              href: "https://github.com/PaloAltoNetworks/docusaurus-openapi-docs",
             },
           ],
         },
@@ -130,163 +109,110 @@ const config: Config = {
     },
     prism: {
       additionalLanguages: [
-        'ruby',
-        'csharp',
-        'php',
-        'java',
-        'powershell',
-        'json',
-        'bash',
+        "ruby",
+        "csharp",
+        "php",
+        "java",
+        "powershell",
+        "json",
+        "bash",
       ],
     },
     languageTabs: [
       {
-        highlight: 'bash',
-        language: 'curl',
-        logoClass: 'bash',
+        highlight: "bash",
+        language: "curl",
+        logoClass: "bash",
       },
       {
-        highlight: 'python',
-        language: 'python',
-        logoClass: 'python',
-        variant: 'requests',
+        highlight: "python",
+        language: "python",
+        logoClass: "python",
+        variant: "requests",
       },
       {
-        highlight: 'go',
-        language: 'go',
-        logoClass: 'go',
+        highlight: "go",
+        language: "go",
+        logoClass: "go",
       },
       {
-        highlight: 'javascript',
-        language: 'nodejs',
-        logoClass: 'nodejs',
-        variant: 'axios',
+        highlight: "javascript",
+        language: "nodejs",
+        logoClass: "nodejs",
+        variant: "axios",
       },
       {
-        highlight: 'ruby',
-        language: 'ruby',
-        logoClass: 'ruby',
+        highlight: "ruby",
+        language: "ruby",
+        logoClass: "ruby",
       },
       {
-        highlight: 'csharp',
-        language: 'csharp',
-        logoClass: 'csharp',
-        variant: 'httpclient',
+        highlight: "csharp",
+        language: "csharp",
+        logoClass: "csharp",
+        variant: "httpclient",
       },
       {
-        highlight: 'php',
-        language: 'php',
-        logoClass: 'php',
+        highlight: "php",
+        language: "php",
+        logoClass: "php",
       },
       {
-        highlight: 'java',
-        language: 'java',
-        logoClass: 'java',
-        variant: 'unirest',
+        highlight: "java",
+        language: "java",
+        logoClass: "java",
+        variant: "unirest",
       },
       {
-        highlight: 'powershell',
-        language: 'powershell',
-        logoClass: 'powershell',
+        highlight: "powershell",
+        language: "powershell",
+        logoClass: "powershell",
       },
     ],
     announcementBar: {
-      id: 'announcementBar_1',
-      content: 'Beta preview that adds support for Docusaurus v3.0.0',
+      id: "announcementBar_1",
+      content: "Beta preview that adds support for Docusaurus v3.0.0",
     },
   } satisfies Preset.ThemeConfig,
 
   plugins: [
     [
-      'docusaurus-plugin-openapi-docs',
+      "docusaurus-plugin-openapi-docs",
       {
-        id: 'openapi',
-        docsPluginId: 'classic',
+        id: "openapi",
+        docsPluginId: "classic",
         config: {
           json_placeholder: {
-            specPath: 'examples/jsonplaceholder/openapi.yaml',
-            outputDir: 'docs/json_placeholder',
-            baseUrl: '/json_placeholder',
+            specPath: "./examples/jsonplaceholder/openapi_zh-TW.yaml",
+            outputDir: "./docs/json-placeholder",
             showSchemas: true,
-            template: 'api.mustache',
+            sidebarOptions: {},
           } satisfies OpenApiPlugin.Options,
-          // petstore_versioned: {
-          //   specPath: 'examples/petstore.yaml',
-          //   outputDir: 'docs/petstore_versioned', // No trailing slash
-          //   sidebarOptions: {
-          //     groupPathsBy: 'tag',
-          //     categoryLinkSource: 'tag',
-          //   },
-          //   version: '2.0.0', // Current version
-          //   label: 'v2.0.0', // Current version label
-          //   baseUrl: '/petstore_versioned/swagger-petstore-yaml', // Leading slash is important
-          //   versions: {
-          //     '1.0.0': {
-          //       specPath: 'examples/petstore-1.0.0.yaml',
-          //       outputDir: 'docs/petstore_versioned/1.0.0', // No trailing slash
-          //       label: 'v1.0.0',
-          //       baseUrl: '/petstore_versioned/1.0.0/swagger-petstore-yaml', // Leading slash is important
-          //     },
-          //   },
-          // } satisfies OpenApiPlugin.Options,
-          // petstore: {
-          //   specPath: 'examples/petstore.yaml',
-          //   proxy: 'https://cors.pan.dev',
-          //   outputDir: 'docs/petstore',
-          //   sidebarOptions: {
-          //     groupPathsBy: 'tag',
-          //     categoryLinkSource: 'tag',
-          //   },
-          //   template: 'api.mustache', // Customize API MDX with mustache template
-          //   downloadUrl:
-          //     'https://raw.githubusercontent.com/PaloAltoNetworks/docusaurus-openapi-docs/main/demo/examples/petstore.yaml',
-          //   hideSendButton: false,
+          // pet_store: {
+          //   label: 'Pet Store API Example',
+          //   specPath: './examples/petstore.yaml',
+          //   outputDir: './docs/pet-store',
           //   showSchemas: true,
-          // } satisfies OpenApiPlugin.Options,
-          // cos: {
-          //   specPath: 'examples/openapi-cos.json',
-          //   outputDir: 'docs/cos',
-          //   sidebarOptions: {
-          //     groupPathsBy: 'tag',
-          //   },
-          // } satisfies OpenApiPlugin.Options,
-          // burgers: {
-          //   specPath: 'examples/food/burgers/openapi.yaml',
-          //   outputDir: 'docs/food/burgers',
-          // } satisfies OpenApiPlugin.Options,
-          // yogurt: {
-          //   specPath: 'examples/food/yogurtstore/openapi.yaml',
-          //   outputDir: 'docs/food/yogurtstore',
-          // } satisfies OpenApiPlugin.Options,
-          // restaurant: {
-          //   specPath: 'examples/food/restaurant/openapi.yaml',
-          //   outputDir: 'docs/restaurant',
-          //   sidebarOptions: {
-          //     groupPathsBy: 'tagGroup',
-          //   },
-          // } satisfies OpenApiPlugin.Options,
-          // jsonPlaceholder: {
-          //   specPath: 'examples/jsonplaceholder/openapi.yaml',
-          //   // proxy: 'https://cors.pan.dev',
-          //   outputDir: 'docs/jsonPlaceholder',
-          //   sidebarOptions: {
-          //     groupPathsBy: 'tag',
-          //     categoryLinkSource: 'tag',
-          //   },
-          //   // template: 'api.mustache', // Customize API MDX with mustache template
-          //   // downloadUrl:
-          //   //   'https://raw.githubusercontent.com/PaloAltoNetworks/docusaurus-openapi-docs/main/demo/examples/jsonplaceholder/openapi.yaml',
-          //   showSchemas: true,
+          //   sidebarOptions: {},
+          //   showExtensions: true,
           // } satisfies OpenApiPlugin.Options,
         } satisfies Plugin.PluginOptions,
       },
     ],
+    // require.resolve('docusaurus-lunr-search'),
   ],
-  themes: ['docusaurus-theme-openapi-docs'],
+  themes: [
+    "docusaurus-theme-openapi-docs",
+    // only available in build
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      { hashed: true, docsRouteBasePath: "/" } satisfies PluginOptions,
+    ],
+  ],
   stylesheets: [
     {
-      href: 'https://use.fontawesome.com/releases/v5.11.0/css/all.css',
-      type: 'text/css',
+      href: "https://use.fontawesome.com/releases/v5.11.0/css/all.css",
+      type: "text/css",
     },
   ],
 };
