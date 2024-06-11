@@ -197,7 +197,7 @@ const config: Config = {
           } satisfies OpenApiPlugin.Options,
           json_placeholder_en: {
             specPath: "./examples/en/jsonplaceholder/openapi_en.yaml",
-            outputDir: "./docs/current/json-placeholder",
+            outputDir: "./docs/json-placeholder",
             showSchemas: true,
             sidebarOptions: {},
           } satisfies OpenApiPlugin.Options,

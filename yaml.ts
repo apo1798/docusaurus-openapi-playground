@@ -33,8 +33,6 @@ const generateLocalizedFiles = (
   fileObject: Record<string, any>,
   supportedLanguages: string[],
 ) => {
-  fs.writeFileSync("aaaa.json", JSON.stringify(fileObject), "utf-8");
-
   supportedLanguages.forEach((lang) => {
     const clonedObject = structuredClone(fileObject);
 
