@@ -79,6 +79,13 @@ const config: Config = {
               groupPathsBy: "tag",
             },
           } satisfies OpenApiPlugin.Options,
+          "json-placeholder": {
+            specPath: "api/json-placehoder.yaml",
+            outputDir: "docs/json-placeholder",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
         },
       },
     ],
