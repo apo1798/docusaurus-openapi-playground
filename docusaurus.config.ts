@@ -9,10 +9,12 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://beBit-tech.github.io',
+  // url: 'https://beBit-tech.github.io', // TODO
+  url: 'https://apo1798.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/dev-doc-site',
+  // baseUrl: '/dev-doc-site', // TODO
+  baseUrl: '/docusaurus-openapi-playground',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
